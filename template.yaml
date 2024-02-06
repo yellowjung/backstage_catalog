@@ -24,10 +24,10 @@ spec:
   steps:
     - id: scaffold
       name: Scaffold Files
-      action: fetch:cookiecutter
+      action: fetch:template
       input:
-        url: https://github.com/yellowjung/backstage_catalog.git
-        directory: skeleton
+        url: ./skeleton
+          cookiecutterCompat: true
         values:
           name: '{{ parameters.name }}'
     - id: createRepo
