@@ -27,7 +27,7 @@ spec:
       action: fetch:cookiecutter
       input:
         url: https://github.com/yellowjung/backstage_catalog.git
-        directory: /skeleton
+        directory: skeleton
         values:
           name: '{{ parameters.name }}'
     - id: createRepo
