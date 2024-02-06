@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tomcat-application
+  name: {{ parameters.name }}-tomcat
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/your-org/tomcat-application.git'
-    path: path/to/kubernetes/manifests
+    repoURL: 'https://github.com/{{ parameters.githubOrg }}/{{ parameters.name }}'
+    path: .
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'

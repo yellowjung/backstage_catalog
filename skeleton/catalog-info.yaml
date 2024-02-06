@@ -1,15 +1,14 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: tomcat-application
-  description: "A Tomcat container deployed via ArgoCD"
+  name: tomcat-deployment-template
+  description: Scaffolds a Tomcat deployment on Minikube using ArgoCD
   tags:
+    - template
     - tomcat
-    - java
+    - argocd
+    - minikube
 spec:
-  type: service
+  type: template
   lifecycle: experimental
   owner: youngdon
-  definition: 
-    type: website
-    repository: https://github.com/your-org/tomcat-application.git

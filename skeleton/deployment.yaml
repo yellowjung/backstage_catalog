@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tomcat-deployment
+  name: {{ parameters.name }}-tomcat
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: tomcat
-  replicas: 1
+      app: {{ parameters.name }}-tomcat
   template:
     metadata:
       labels:
-        app: tomcat
+        app: {{ parameters.name }}-tomcat
     spec:
       containers:
       - name: tomcat
