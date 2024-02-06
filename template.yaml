@@ -36,6 +36,8 @@ spec:
       input:
         org: '{{ parameters.githubOrg }}'
         name: '{{ parameters.name }}'
+        repoURL: 'https://github.com/{{ parameters.githubOrg }}/{{ parameters.name }}'
+        defaultBranch: main
         private: false
         files:
           - path: deployment.yaml
