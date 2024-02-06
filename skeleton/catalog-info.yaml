@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tomcat-application
+  description: "A Tomcat container deployed via ArgoCD"
+  tags:
+    - tomcat
+    - java
+spec:
+  type: service
+  lifecycle: experimental
+  owner: youngdon
+  definition: 
+    type: website
+    repository: https://github.com/your-org/tomcat-application.git

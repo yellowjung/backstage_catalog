@@ -1,0 +1,59 @@
+apiVersion: backstage.io/v1beta2
+kind: Template
+metadata:
+  name: tomcat-deployment-template
+  title: Tomcat Application Deployment
+  description: Template for deploying a Tomcat application using ArgoCD on Kubernetes
+  tags:
+    - argocd
+    - kubernetes
+    - tomcat
+spec:
+  owner: yeavov@gmail.com
+  type: service
+
+  parameters:
+    - title: Application Configuration
+      required:
+        - name
+        - repoUrl
+      properties:
+        name:
+          type: string
+          title: Application Name
+          description: Unique name for the application
+        repoUrl:
+          type: string
+          title: Repository URL
+          description: URL of the Git repository containing the application source code
+
+  steps:
+    - id: fetch-base
+      name: Fetch Base Templates
+      action: fetch:template
+      input:
+        url: ./path/to/tomcat-kubernetes-base-templates
+    - id: prepare-k8s-manifests
+      name: Prepare Kubernetes Manifests
+      action: template
+      input:
+        templatePath: tomcat-deployment.yaml
+        output: ./kubernetes
+    - id: prepare-argocd-manifest
+      name: Prepare ArgoCD Manifest
+      action: template
+      input:
+        templatePath: argocd-application.yaml
+        output: ./argocd
+    - id: publish
+      name: Publish to Git
+      action: publish:git
+      input:
+        repoUrl: ${{ parameters.repoUrl }}
+
+  output:
+    links:
+      - url: ${{ steps.publish.output.repoUrl }}
+        title: Source Code Repository
+      - url: https://argocd.example.com/applications/${{ parameters.name }}
+        title: ArgoCD Application
