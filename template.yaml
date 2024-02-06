@@ -22,7 +22,7 @@ spec:
           title: GitHub Organization/User
           description: The GitHub organization or user where the repository will be created
   steps:
-    - id: scaffold
+    - id: fetch-base
       name: Scaffold Files
       action: fetch:template
       input:
