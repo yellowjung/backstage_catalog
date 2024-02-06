@@ -27,7 +27,6 @@ spec:
       action: fetch:template
       input:
         url: https://github.com/yellowjung/backstage_catalog.git
-        cookiecutterCompat: true
         directory: skeleton
         values:
           name: '{{ parameters.name }}'
