@@ -5,7 +5,7 @@ metadata:
   title: Tomcat Deployment on Minikube with ArgoCD
   description: Scaffolds a project to deploy a Tomcat application on Minikube using ArgoCD
 spec:
-  owner: your-team
+  owner: youngdon
   type: service
   parameters:
     - title: Application Configuration
@@ -45,5 +45,5 @@ spec:
     links:
       - url: https://github.com/{{ parameters.githubOrg }}/{{ parameters.name }}
         title: View the GitHub Repository
-      - url: https://argocd.yourdomain.com/applications/{{ parameters.name }}
+      - url: https://localhost:8080/applications/{{ parameters.name }}
         title: View the Application in ArgoCD
