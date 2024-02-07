@@ -36,7 +36,7 @@ spec:
         url: https://github.com/yellowjung/backstage_catalog.git
         directory: skeleton
         values:
-          name: '{{ parameters.name }}'
+          name: '${{ parameters.name }}'
     
     - id: createRepo
       name: Create GitHub Repository
@@ -44,9 +44,9 @@ spec:
       input:
         allowedHosts: ["github.com"]
         description: this is ${{ parameters.name }} deploy
-        org: '{{ parameters.githubOrg }}'
-        name: '{{ parameters.name }}'
-        repoUrl: 'github.com/{{ parameters.githubOrg }}/{{ parameters.name }}'
+        org: '${{ parameters.githubOrg }}'
+        name: '${{ parameters.name }}'
+        repoUrl: 'github.com/${{ parameters.githubOrg }}/${{ parameters.name }}'
         defaultBranch: main
         repoVisibility: public
         files:
@@ -55,7 +55,7 @@ spec:
           - path: argocd-app.yaml
   output:
     links:
-      - url: https://github.com/{{ parameters.githubOrg }}/{{ parameters.name }}
+      - url: https://github.com/${{ parameters.githubOrg }}/${{ parameters.name }}
         title: View the GitHub Repository
-      - url: https://localhost:8080/applications/{{ parameters.name }}
+      - url: https://localhost:8080/applications/${{ parameters.name }}
         title: View the Application in ArgoCD
