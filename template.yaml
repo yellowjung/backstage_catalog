@@ -25,7 +25,7 @@ spec:
           title: GitHub Organization/User
           ui:field: RepoUrlPicker
           ui:options:
-            allowedhosts:
+            allowedHosts:
               - github.com
           description: The GitHub organization or user where the repository will be created
   steps:
