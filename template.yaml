@@ -23,9 +23,13 @@ spec:
         githubOrg:
           type: string
           title: GitHub Organization/User
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedhosts:
+              - github.com
           description: The GitHub organization or user where the repository will be created
   steps:
-    - id: fetch-base
+    - id: teamplate
       name: Scaffold Files
       action: fetch:template
       input:
