@@ -34,8 +34,6 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton
-        copyWithoutTemplating:
-          - .github/workflows/*
         values:
           name: '${{ parameters.name }}'
           url: '${{ parameters.githubOrg | parseRepoUrl}}'
