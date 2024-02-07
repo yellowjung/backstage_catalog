@@ -37,6 +37,7 @@ spec:
         directory: skeleton
         values:
           name: '${{ parameters.name }}'
+          url: '${{ parameters.githubOrg }}'
     
     - id: createRepo
       name: Create GitHub Repository

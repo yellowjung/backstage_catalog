@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ${{ parameters.name }}-tomcat
+  name: ${{ values.name }}-tomcat
 spec:
   project: default
   source:
-    repoURL: 'github.com/${{ parameters.githubOrg }}/${{ parameters.name }}'
+    repoURL: 'github.com/${{ values.url }}/${{ values.name }}'
     path: .
     targetRevision: HEAD
   destination:
