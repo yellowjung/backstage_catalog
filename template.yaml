@@ -4,6 +4,9 @@ metadata:
   name: tomcat-deployment-template
   title: Tomcat Deployment on Minikube with ArgoCD
   description: Scaffolds a project to deploy a Tomcat application on Minikube using ArgoCD
+  tags:
+    - tomcat
+    - argocd
 spec:
   owner: youngdon
   type: service
