@@ -33,11 +33,12 @@ spec:
       name: Scaffold Files
       action: fetch:template
       input:
-        url: https://github.com/yellowjung/backstage_catalog.git
-        directory: skeleton
+        url: ./skeleton
+        copyWithoutTemplating:
+          - .github/workflows/*
         values:
           name: '${{ parameters.name }}'
-          url: '${{ parameters.githubOrg }}'
+          url: '${{ parameters.githubOrg | parseRepoUrl}}'
     
     - id: createRepo
       name: Create GitHub Repository
@@ -45,9 +46,7 @@ spec:
       input:
         allowedHosts: ["github.com"]
         description: this is ${{ parameters.name }} deploy
-        org: '${{ parameters.githubOrg }}'
-        name: '${{ parameters.name }}'
-        repoUrl: 'github.com/${{ parameters.githubOrg }}/${{ parameters.name }}'
+        repoUrl: ${{ parameters.githubOrg }}
         defaultBranch: main
         repoVisibility: public
         files:
@@ -56,7 +55,7 @@ spec:
           - path: argocd-app.yaml
   output:
     links:
-      - url: https://github.com/${{ parameters.githubOrg }}/${{ parameters.name }}
+      - url: ${{ steps.createRepo.output.remoteUrl }}
         title: View the GitHub Repository
       - url: https://localhost:8080/applications/${{ parameters.name }}
         title: View the Application in ArgoCD

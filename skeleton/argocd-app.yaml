@@ -5,7 +5,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'github.com/${{ values.url }}/${{ values.name }}'
+    repoURL: '${{ values.url }}'
     path: .
     targetRevision: HEAD
   destination:
