@@ -37,15 +37,18 @@ spec:
         directory: skeleton
         values:
           name: '{{ parameters.name }}'
+    
     - id: createRepo
       name: Create GitHub Repository
       action: publish:github
       input:
+        allowedHosts: ["github.com"]
+        description: this is ${{ parameters.name }} deploy
         org: '{{ parameters.githubOrg }}'
         name: '{{ parameters.name }}'
         repoUrl: 'https://github.com/{{ parameters.githubOrg }}/{{ parameters.name }}'
         defaultBranch: main
-        private: false
+        repoVisibility: public
         files:
           - path: deployment.yaml
           - path: service.yaml
