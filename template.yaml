@@ -46,7 +46,7 @@ spec:
         description: this is ${{ parameters.name }} deploy
         org: '{{ parameters.githubOrg }}'
         name: '{{ parameters.name }}'
-        repoUrl: 'https://github.com/{{ parameters.githubOrg }}/{{ parameters.name }}'
+        repoUrl: 'github.com/{{ parameters.githubOrg }}/{{ parameters.name }}'
         defaultBranch: main
         repoVisibility: public
         files:
